@@ -41,7 +41,7 @@ async function configUser(cwd: string): Promise<void> {
  *  tracking origin/main). Returns all three plus the local box's initial HEAD. */
 async function setup(): Promise<{ remote: string; seed: string; local: string; c1: string }> {
   const remote = mkTmp("upd-remote-");
-  await git(remote, "init", "--bare", "-q");
+  await git(remote, "init", "--bare", "-q", "--initial-branch=main");
   const seed = mkTmp("upd-seed-");
   await git(seed, "init", "-q");
   await configUser(seed);
